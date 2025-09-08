@@ -8,7 +8,7 @@ public class DecodedOriginal
 {
     public async ValueTask DoStuff()
     {
-        var filePath = @"C:\sers\nc_ci\GitProjects\NickSpaghetti\signal-booster\physician_note1.txt";
+        var filePath = @"C:\Users\nc_ci\GitProjects\NickSpaghetti\signal-booster\physician_note1.txt";
 
         var fileContent = string.Empty;
 

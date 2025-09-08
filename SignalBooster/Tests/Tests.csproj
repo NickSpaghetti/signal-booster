@@ -18,4 +18,17 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SignalBoosterCLI\SignalBoosterCLI.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="TestFiles\physican_note2.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="TestFiles\physician_note1.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

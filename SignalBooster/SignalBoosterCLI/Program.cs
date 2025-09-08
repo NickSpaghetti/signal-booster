@@ -2,7 +2,7 @@
 using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
 
-var filePath = @"C:\sers\nc_ci\GitProjects\NickSpaghetti\signal-booster\physician_note1.txt";
+var filePath = @"C:\Users\nc_ci\GitProjects\NickSpaghetti\signal-booster\physician_note1.txt";
 
 var fileContent = string.Empty;
 
