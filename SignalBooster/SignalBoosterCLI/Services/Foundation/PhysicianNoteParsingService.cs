@@ -66,7 +66,7 @@ public class PhysicianNoteParsingService(PhysicianNoteValidator physicianNoteVal
         return note;
     }
     
-    private PhysicianNote ParseJson(string jsonContent)
+    private PhysicianNote? ParseJson(string jsonContent)
     {
         // Check if the JSON has a "data" field.
         if (jsonContent.Contains("\"data\":"))
