@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 using Models;
 using SignalBoosterCLI.Validators;
 
-public class NoteParsingService(PhysicianNoteValidator physicianNoteValidator)
+public class PhysicianNoteParsingService(PhysicianNoteValidator physicianNoteValidator)
 {
     private readonly PhysicianNoteValidator _physicianNoteValidator = physicianNoteValidator;
 
