@@ -2,7 +2,7 @@
 
 namespace SignalBoosterCLI.Validators;
 
-public class PhysicianNoteValidator
+public class PhysicianNoteValidator : IPhysicianNoteValidator
 {
     public void Validate(PhysicianNote note)
     {

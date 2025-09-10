@@ -1,8 +1,8 @@
 ﻿{
-  "Patient Name": "Seth Smith",
+  "PatientName": "Seth Smith",
   "DOB": "04/12/1952",
   "Diagnosis": "CPAP",
   "Prescription": "Patient needs a CPAP with full face mask and humidifier.",
   "Usage": "During sleep and exertion.",
-  "Ordering Physician": "Dr. Cameron"
+  "OrderingPhysician": "Dr. Cameron"
 }
