@@ -43,9 +43,12 @@ public class OrderOrchestrationService(ILogger<OrderOrchestrationService> logger
 
         var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-
+        logger.LogInformation("Sent order to vendor");
         using var httpClient = new HttpClient();
-        var response = await httpClient.PostAsync("https://alert-api.com/DrExtract", content);
+        //var response = await httpClient.PostAsync("https://alert-api.com/DrExtract", content);
+        var response = await httpClient.PostAsync("http://localhost:5000/api/DrExtract", content);
         response.EnsureSuccessStatusCode();
+        logger.LogInformation($"Response from vendor:   {await response.Content.ReadAsStringAsync()}");
+        
     }
 }
