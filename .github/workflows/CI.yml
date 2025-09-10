@@ -1,4 +1,4 @@
-name: Continuous Integration Chron
+name: Continuous Integration
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore
     
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build "SignalBooster" --no-restore --configuration Release
 
     - name: Run tests
       run:  dotnet test  "SignalBooster/Tests/Tests.csproj" --verbosity normal
