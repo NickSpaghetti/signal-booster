@@ -20,7 +20,7 @@ jobs:
         dotnet-version: '9.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore "SignalBooster"
     
     - name: Build
       run: dotnet build "SignalBooster" --no-restore --configuration Release
