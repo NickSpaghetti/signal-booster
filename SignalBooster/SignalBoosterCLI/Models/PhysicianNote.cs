@@ -14,12 +14,18 @@ public class PhysicianNote
     [JsonPropertyName("diagnosis")]
     public string Diagnosis { get; set; }
     
+    [JsonPropertyName("recommendation")]
+    public string? Recommendation { get; set; }
+    
     [JsonPropertyName("prescription")]
-    public string Prescription { get; set; }
+    public string? Prescription { get; set; }
     
     [JsonPropertyName("usage")]
     public string Usage { get; set; }
     
     [JsonPropertyName("OrderingPhysician")]
     public string OrderingPhysician { get; set; }
+    
+    [JsonPropertyName("AHI")]
+    public string? AHI {get;set;}
 }

@@ -14,11 +14,12 @@ public class OrderCreationService(OrderValidator orderValidator, ILogger<OrderCr
     
     public Order CreateOrderFromNote(PhysicianNote physicianNote)
     {   
-        var device = GetDevice(physicianNote.Prescription);
-        var maskType = GetMaskType(physicianNote.Prescription,device);
-        var addOns = GetAddOns(physicianNote.Prescription);
-        var qualifiers = GetQualifier(physicianNote.Prescription);
-        var oxygenDetails = GetOxygenDetails(physicianNote.Prescription);
+        var perscription = physicianNote.Prescription ?? physicianNote.Recommendation;
+        var device = GetDevice(perscription);
+        var maskType = GetMaskType(perscription,device);
+        var addOns = GetAddOns(perscription);
+        var qualifiers = GetQualifier(physicianNote.AHI);
+        var oxygenDetails = GetOxygenDetails(perscription);
 
         var order = new Order()
         {
@@ -27,7 +28,7 @@ public class OrderCreationService(OrderValidator orderValidator, ILogger<OrderCr
             MaskType = maskType,
             OrderingProvider = physicianNote.OrderingPhysician,
             Qualifier = qualifiers,
-            Usage = oxygenDetails?.Usage ?? physicianNote.Usage,
+            Usage = oxygenDetails?.Usage ?? physicianNote?.Usage,
             Liters = oxygenDetails?.Liters,
         };
         
@@ -84,13 +85,16 @@ public class OrderCreationService(OrderValidator orderValidator, ILogger<OrderCr
     }
 
 
-    private string GetQualifier(string note)
+    private string GetQualifier(string qualifier)
     {
-        if (note.Contains("AHI > 20", StringComparison.OrdinalIgnoreCase))
+        int? qualifierValue = int.TryParse(qualifier, out var result) ? result : null;
+
+        return qualifierValue switch
         {
-            return "AHI > 20";
-        }
-        return string.Empty;
+            null => string.Empty,
+            > 0 => $"AHI > {qualifierValue}",
+            _ => string.Empty
+        };
     }
         
 

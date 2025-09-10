@@ -18,7 +18,7 @@ public class DecodedOriginal
         }
         else
         {
-            fileContent = File.ReadAllText(filePath);
+            fileContent = await File.ReadAllTextAsync(filePath);
         }
 
         Console.WriteLine(fileContent);

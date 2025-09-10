@@ -82,7 +82,7 @@ for (var i = 0; i < args.Length; i++)
     }
 }
 
-if (!string.IsNullOrEmpty(inputStringFromArg) && !string.IsNullOrEmpty(inputStringFromArg))
+if (!string.IsNullOrEmpty(filePathFromArg) && !string.IsNullOrEmpty(inputStringFromArg))
 {
     logger.LogError("You cannot specify both --input and --file. Use --help for usage information.");
     return;
