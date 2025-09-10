@@ -140,7 +140,6 @@ public class PhysicianNoteParsingService(PhysicianNoteValidator physicianNoteVal
     
     private PhysicianNote? ParseJson(string jsonContent)
     {
-        // Check if the JSON has a "data" field.
         if (jsonContent.Contains("\"data\":"))
         {
             var dataWrapper = JsonSerializer.Deserialize<JsonDataWrapper>(jsonContent);
