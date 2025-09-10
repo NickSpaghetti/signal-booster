@@ -63,6 +63,7 @@ If you need to trouble shoot any of the docker files you can use the commands `m
 ### Technologies used
 
 * IDES: Rider, VSCode, and neovim.
+* OS used: macOS, Ubuntu, and Windows
 * Ai Development tools used: [OpenCode](https://opencode.ai/) with models runing locally and GitHub copilot.
 
 ### Assumptions
