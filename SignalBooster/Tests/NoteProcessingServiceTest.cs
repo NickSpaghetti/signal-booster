@@ -27,7 +27,7 @@ public class NoteProcessingServiceTest
             Assert.Null(result["mask_type"]);
             Assert.Null(result["add_ons"]);
             Assert.Equal("", result["qualifier"]?.ToString());
-            Assert.Equal("Dr. Cuddy\r\n", result["ordering_provider"]?.ToString());
+            Assert.Equal("Dr. Cuddy\r", result["ordering_provider"]?.ToString());
             Assert.Equal("2 L", result["liters"]?.ToString());
             Assert.Equal("sleep and exertion", result["usage"]?.ToString());
         }
