@@ -9,6 +9,7 @@ using SignalBoosterCLI.Models;
 using SignalBoosterCLI.Services.Foundation;
 
 public class OrderOrchestrationService(ILogger<OrderOrchestrationService> logger,
+    IConfiguration config,
     IOrderCreationService orderCreationService, 
     IPhysicianNoteParsingService  physicianNoteParsingService,
     ILocalFileService localFileService) : IOrderOrchestrationService
@@ -44,9 +45,10 @@ public class OrderOrchestrationService(ILogger<OrderOrchestrationService> logger
         var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
         logger.LogInformation("Sent order to vendor");
+        var baseAddress = config["vendor_api_baseurl"] ?? "http://localhost:5000";
         using var httpClient = new HttpClient();
         //var response = await httpClient.PostAsync("https://alert-api.com/DrExtract", content);
-        var response = await httpClient.PostAsync("http://localhost:5000/api/DrExtract", content);
+        var response = await httpClient.PostAsync($"{baseAddress}/api/DrExtract", content);
         response.EnsureSuccessStatusCode();
         logger.LogInformation($"Response from vendor:   {await response.Content.ReadAsStringAsync()}");
         

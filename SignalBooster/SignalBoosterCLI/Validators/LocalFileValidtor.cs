@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.Logging;
 
-public class LocalFileValidtor(ILogger<LocalFileValidtor> logger)
+public class LocalFileValidtor(ILogger<LocalFileValidtor> logger) : ILocalFileValidtor
 {
     public void Validate(string path)
     {

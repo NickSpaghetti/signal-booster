@@ -1,0 +1,28 @@
+services:
+  vendor-api:
+    container_name: signalbooster_api
+    build:
+      context: .
+      dockerfile: SignalBooster/VendorApi/Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    networks:
+      - signal-booster-network
+
+  # Uncomment the following section to run the console application for a single command
+  # console-app:
+  #   container_name: signalbooster_console
+  #   build:
+  #     context: .
+  #     dockerfile: SignalBooster/SignalBoosterCLI/Dockerfile
+  #   networks:
+  #     - signal-booster-network
+  #   volumes:
+  #     - ./physician_note1.txt:/app/data/note1.txt
+  #     - ./physician_note2.txt:/app/data/note2.txt
+  #   environment:
+  #     - VendorApi_BaseUrl=http://vendor-api:8080
+networks:
+  signal-booster-network:
+    driver: bridge

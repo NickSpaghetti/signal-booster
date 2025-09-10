@@ -8,9 +8,8 @@ using Microsoft.Extensions.Logging;
 using SignalBoosterCLI.Validators;
 using Models;
 
-public class OrderCreationService(OrderValidator orderValidator, ILogger<OrderCreationService> logger) : IOrderCreationService
+public class OrderCreationService(IOrderValidator orderValidator, ILogger<OrderCreationService> logger) : IOrderCreationService
 {
-    private readonly OrderValidator _orderValidator = orderValidator;
     
     public Order CreateOrderFromNote(PhysicianNote physicianNote)
     {   
@@ -34,7 +33,7 @@ public class OrderCreationService(OrderValidator orderValidator, ILogger<OrderCr
         
         logger.LogInformation($"Created order {JsonSerializer.Serialize(order, LoggingJsonOptions.Options)}");
         
-        _orderValidator.Validate(order);
+        orderValidator.Validate(order);
         
         return order;
     }

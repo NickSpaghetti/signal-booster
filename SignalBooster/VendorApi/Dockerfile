@@ -7,9 +7,9 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["VendorApi/VendorApi.csproj", "VendorApi/"]
+COPY ["SignalBooster/VendorApi/VendorApi.csproj", "VendorApi/"]
 RUN dotnet restore "VendorApi/VendorApi.csproj"
-COPY . .
+COPY SignalBooster/VendorApi/. ./VendorApi/
 WORKDIR "/src/VendorApi"
 RUN dotnet build "./VendorApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
@@ -17,7 +17,7 @@ FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./VendorApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-FROM base AS final
+FROM base AS production
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "VendorApi.dll"]

@@ -8,10 +8,8 @@ using Microsoft.Extensions.Logging;
 using SignalBoosterCLI.Utilities.Serializers;
 using System.Text.RegularExpressions;
 
-public class PhysicianNoteParsingService(PhysicianNoteValidator physicianNoteValidator, ILogger<PhysicianNoteParsingService> logger) : IPhysicianNoteParsingService
+public class PhysicianNoteParsingService(IPhysicianNoteValidator physicianNoteValidator, ILogger<PhysicianNoteParsingService> logger) : IPhysicianNoteParsingService
 {
-    private readonly PhysicianNoteValidator _physicianNoteValidator = physicianNoteValidator;
-
     public PhysicianNote ParseNote(string noteContent)
     {
         // Trim and check for JSON structure
@@ -156,7 +154,12 @@ public class PhysicianNoteParsingService(PhysicianNoteValidator physicianNoteVal
             
         }
         
-        return JsonSerializer.Deserialize<PhysicianNote>(jsonContent);
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+        
+        return JsonSerializer.Deserialize<PhysicianNote>(jsonContent,options);
     }
     
     private class JsonDataWrapper
