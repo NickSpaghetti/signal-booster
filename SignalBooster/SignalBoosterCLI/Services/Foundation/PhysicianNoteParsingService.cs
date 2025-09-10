@@ -1,21 +1,22 @@
 ﻿namespace SignalBoosterCLI.Services.Foundation;
 
-using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Models;
 using SignalBoosterCLI.Validators;
+using Microsoft.Extensions.Logging;
+using SignalBoosterCLI.Utilities.Serializers;
 
-public class PhysicianNoteParsingService(PhysicianNoteValidator physicianNoteValidator)
+public class PhysicianNoteParsingService(PhysicianNoteValidator physicianNoteValidator, ILogger<PhysicianNoteParsingService> logger) : IPhysicianNoteParsingService
 {
     private readonly PhysicianNoteValidator _physicianNoteValidator = physicianNoteValidator;
 
-    public PhysicianNote ParseNote(string fileContent)
+    public PhysicianNote ParseNote(string noteContent)
     {
         // Trim and check for JSON structure
         PhysicianNote physicianNote;
-        var trimmedContent = fileContent.Trim();
-        if (trimmedContent.StartsWith("{"))
+        var trimmedContent = noteContent.Trim();
+        if (IsValidJson(trimmedContent))
         {
             // If the content is JSON, parse it as a JSON file.
             physicianNote = ParseJson(trimmedContent);
@@ -25,8 +26,27 @@ public class PhysicianNoteParsingService(PhysicianNoteValidator physicianNoteVal
             // Otherwise, assume it is a text file and parse accordingly.
             physicianNote = ParseText(trimmedContent);
         }
+
+        logger.LogInformation(
+            $"Created Physician Note {JsonSerializer.Serialize(physicianNote, LoggingJsonOptions.Options)}");
+        
         physicianNoteValidator.Validate(physicianNote);
         return physicianNote;
+    }
+
+    private bool IsValidJson(string json)
+    {
+        try
+        {
+            JsonDocument.Parse(json);
+            logger.LogInformation("Note is valid json");
+            return true;
+        }
+        catch (JsonException)
+        {
+            logger.LogInformation("Note is not valid json");
+            return false;
+        }
     }
     
     private PhysicianNote ParseText(string fileContent)

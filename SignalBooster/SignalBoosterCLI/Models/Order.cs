@@ -6,16 +6,16 @@ using System.Collections.Generic;
 public class Order
 {
     [JsonPropertyName("device")]
-    public string Device { get; set; }
+    public string? Device { get; set; }
     
     [JsonPropertyName("mask_type")]
-    public string MaskType { get; set; }
+    public string? MaskType { get; set; }
     
     [JsonPropertyName("add_ons")]
-    public List<string> AddOns { get; set; }
+    public List<string>? AddOns { get; set; }
     
     [JsonPropertyName("qualifier")]
-    public string Qualifier { get; set; }
+    public string? Qualifier { get; set; }
     
     [JsonPropertyName("ordering_provider")]
     public string OrderingProvider { get; set; }
