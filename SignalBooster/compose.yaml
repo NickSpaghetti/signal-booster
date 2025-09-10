@@ -1,0 +1,7 @@
+﻿services:
+  signalboostercli:
+    image: signalboostercli
+    build:
+      context: .
+      dockerfile: SignalBoosterCLI/Dockerfile
+

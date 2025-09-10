@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalBoosterCLI", "SignalBoosterCLI\SignalBoosterCLI.csproj", "{D5576F18-2F7E-4C71-AB1F-EA514D7F472D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{763980AA-69CA-4FBF-BD0D-A98AF4AE8794}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{54BB465C-4B91-41A1-AFB0-989240B7C827}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendorApi", "VendorApi\VendorApi.csproj", "{8445AB07-D1EB-4F2B-8A6F-F3F75CCC37BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5576F18-2F7E-4C71-AB1F-EA514D7F472D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5576F18-2F7E-4C71-AB1F-EA514D7F472D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5576F18-2F7E-4C71-AB1F-EA514D7F472D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5576F18-2F7E-4C71-AB1F-EA514D7F472D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54BB465C-4B91-41A1-AFB0-989240B7C827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54BB465C-4B91-41A1-AFB0-989240B7C827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54BB465C-4B91-41A1-AFB0-989240B7C827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54BB465C-4B91-41A1-AFB0-989240B7C827}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8445AB07-D1EB-4F2B-8A6F-F3F75CCC37BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8445AB07-D1EB-4F2B-8A6F-F3F75CCC37BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8445AB07-D1EB-4F2B-8A6F-F3F75CCC37BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8445AB07-D1EB-4F2B-8A6F-F3F75CCC37BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
